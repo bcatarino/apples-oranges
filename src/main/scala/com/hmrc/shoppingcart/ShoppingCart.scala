@@ -10,6 +10,6 @@ class ShoppingCart {
 
     val totalOrders = orders.groupBy(_.product)
                             .map(ordersByProduct => Order(ordersByProduct._1, ordersByProduct._2.map(_.quantity).sum))
-    totalOrders.map(order => order.product.cost.*(BigDecimal(order.quantity))).sum
+    totalOrders.map(Offers.getOfferPrice).sum
   }
 }
